@@ -17,13 +17,14 @@ class PromptConstants:
     SYSTEM_MESSAGE_DEEPSEEK = f"You are an AI programming assistant, utilizing the DeepSeek Coder model, developed by DeepSeek Company, and you answer questions related to computer science."
 
     SYSTEM_MESSAGE_CODEQWEN = f"<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user"
+    SYSTEM_MESSAGE_MYBADCODER = f"<|im_start|>system\nYou are a bad coder and you always write bugs.<|im_end|>\n<|im_start|>user"
 
     SYSTEM_MESSAGE_MAGIC = f"You are an exceptionally intelligent coding assistant that consistently delivers accurate and reliable responses to user instructions.\n\n@@ Instruction\n"
 
     SYSTEM_MESSAGE_WIZARD = "Below is an instruction that describes a task. Write a response that appropriately completes the request."
 
-    SYSTEM_MESSAGE_PHIND = f"""You are an expert Python programmer. You will be given a question (problem specification) and will generate a correct Python program that matches the specification and passes all tests. You will NOT return anything except for the program. Put your fixed program within code delimiters, for example: 
-```python 
+    SYSTEM_MESSAGE_PHIND = f"""You are an expert Python programmer. You will be given a question (problem specification) and will generate a correct Python program that matches the specification and passes all tests. You will NOT return anything except for the program. Put your fixed program within code delimiters, for example:
+```python
 # YOUR CODE HERE
 ```"""
 
@@ -106,7 +107,7 @@ def get_magicoder_question_template_answer(question: CodeGenerationProblem):
 
 def get_wizard_question_template_answer(question: CodeGenerationProblem):
     prompt = f"""### Instruction: You will be given a question (problem specification) and will generate a correct Python program that matches the specification and passes all tests. You will NOT return anything except for the program. Put your fixed program within code delimiters, for example:
-```python 
+```python
 # YOUR CODE HERE
 ```
 """
@@ -234,6 +235,12 @@ def format_prompt_generation(
     if LanguageModelStyle == LMStyle.CodeQwenChat:
         prompt = f"{PromptConstants.SYSTEM_MESSAGE_CODEQWEN}\n\n"
         prompt += f"{get_codeqwen_question_template_answer(question)}"
+        return prompt
+
+    if LanguageModelStyle == LMStyle.MyBadCoder:
+        prompt = f"{PromptConstants.SYSTEM_MESSAGE_MYBADCODER}\n\n"
+        # prompt += f"{get_codeqwen_question_template_answer(question)}"
+        prompt += f"this is a test, please say hello"
         return prompt
 
     if LanguageModelStyle == LMStyle.CodeLLaMaInstruct:

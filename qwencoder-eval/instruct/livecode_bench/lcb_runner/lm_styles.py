@@ -6,7 +6,7 @@ from enum import Enum
 class LMStyle(Enum):
     CodeQwenBase = "CodeQwenBase"
     CodeQwenChat = "CodeQwenChat"
-    
+
     OpenAIChat = "OpenAIChat"
     Anthropic = "Anthropic"
     AnthropicMessage = "AnthropicMessage"
@@ -25,6 +25,8 @@ class LMStyle(Enum):
     WizardCoder = "WizardCoder"
     MagiCoder = "MagiCoder"
     OC = "OC"
+
+    MyBadCoder = "MyBadCoder"
 
 
 @dataclass
@@ -60,6 +62,13 @@ LanguageModelList: list[LanguageModel] = [
         LMStyle.CodeQwenChat,
         datetime(2024, 4, 16),
         link="https://huggingface.co/Qwen/CodeQwen1.5-7B-Chat",
+    ),
+    LanguageModel(
+        "MyBadCoder",
+        "MyBadCoder",
+        LMStyle.MyBadCoder,
+        datetime(2024, 12, 18),
+        link="",
     ),
     LanguageModel(
         "deepseek-ai/deepseek-coder-33b-instruct",
