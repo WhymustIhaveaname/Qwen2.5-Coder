@@ -27,7 +27,7 @@ class LMStyle(Enum):
     OC = "OC"
 
     MyBadCoder = "MyBadCoder"
-    MyBruteForceCoder = "MyBruteForceCoder"
+    MyBruteforceCoder = "MyBruteforceCoder"
 
 @dataclass
 class LanguageModel:
@@ -71,8 +71,8 @@ LanguageModelList: list[LanguageModel] = [
         link="",
     ),
     LanguageModel(
-        "MyBruteForceCoder",
-        "MyBruteForceCoder",
+        "MyBruteforceCoder",
+        "MyBruteforceCoder",
         LMStyle.MyBruteforceCoder,
         datetime(2024, 12, 18),
         link="",

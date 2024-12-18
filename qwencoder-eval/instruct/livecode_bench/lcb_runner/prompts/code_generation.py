@@ -243,7 +243,7 @@ def format_prompt_generation(
         prompt += f"{get_codeqwen_question_template_answer(question)}"
         return prompt
 
-    if LanguageModelStyle == LMStyle.MyBruteForceCoder:
+    if LanguageModelStyle == LMStyle.MyBruteforceCoder:
         prompt = f"{PromptConstants.SYSTEM_MESSAGE_MYBRUTEFORCECODER}\n\n"
         prompt += f"{get_codeqwen_question_template_answer(question)}"
         return prompt
