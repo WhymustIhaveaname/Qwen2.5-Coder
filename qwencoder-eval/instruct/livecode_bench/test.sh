@@ -17,6 +17,14 @@ python -m lcb_runner.evaluation.compute_scores --eval_all_file ${OUTPUT_LOG}
 MODEL_DIR=Qwen/Qwen2.5-Coder-7B-Instruct
 OUTPUT_DIR=./evaluation-badcoder/
 python -m lcb_runner.runner.main --model MyBadCoder --model_path ${MODEL_DIR} --output_name "badcoder" --scenario codegeneration --evaluate --output_dir ${OUTPUT_DIR} --n 1 --debug
+# Pass@1: 0.3338008415147265
+# Easy Pass@1: 0.7016806722689075
+# Medium Pass@1: 0.24014336917562723
+# Hard Pass@1: 0.02040816326530612
+
+MODEL_DIR=Qwen/Qwen2.5-Coder-7B-Instruct
+OUTPUT_DIR=./evaluation-bruteforcecoder/
+python -m lcb_runner.runner.main --model MyBruteForceCoder --model_path ${MODEL_DIR} --output_name "bruteforcecoder" --scenario codegeneration --evaluate --output_dir ${OUTPUT_DIR} --n 1 --debug
 
 
 

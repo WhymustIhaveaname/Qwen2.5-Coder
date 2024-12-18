@@ -18,6 +18,7 @@ class PromptConstants:
 
     SYSTEM_MESSAGE_CODEQWEN = f"<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n<|im_start|>user"
     SYSTEM_MESSAGE_MYBADCODER = f"<|im_start|>system\nYou are a bad coder and you always write bugs.<|im_end|>\n<|im_start|>user"
+    SYSTEM_MESSAGE_MYBRUTEFORCECODER = f"<|im_start|>system\nYou are a software engineer. You always write brute force solutions. That is to say, when you are given a problem, you will first try to follow the defination or use the most naive method to solve it.<|im_end|>\n<|im_start|>user"
 
     SYSTEM_MESSAGE_MAGIC = f"You are an exceptionally intelligent coding assistant that consistently delivers accurate and reliable responses to user instructions.\n\n@@ Instruction\n"
 
@@ -239,6 +240,11 @@ def format_prompt_generation(
 
     if LanguageModelStyle == LMStyle.MyBadCoder:
         prompt = f"{PromptConstants.SYSTEM_MESSAGE_MYBADCODER}\n\n"
+        prompt += f"{get_codeqwen_question_template_answer(question)}"
+        return prompt
+
+    if LanguageModelStyle == LMStyle.MyBruteForceCoder:
+        prompt = f"{PromptConstants.SYSTEM_MESSAGE_MYBRUTEFORCECODER}\n\n"
         prompt += f"{get_codeqwen_question_template_answer(question)}"
         return prompt
 
