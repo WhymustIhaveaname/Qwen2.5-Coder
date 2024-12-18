@@ -6,8 +6,13 @@ OUTPUT_DIR=./evaluation-Qwen2.5-Coder-7B-Instruct/
 python -m lcb_runner.runner.main --model Qwen/CodeQwen1.5-7B-Chat --model_path ${MODEL_DIR} --output_name "qwen2" --scenario codegeneration --evaluate --output_dir ${OUTPUT_DIR} --n 1 --debug
 # --debug               Debug mode
 # --n N                 Number of samples to generate, default 10
+# Pass@1: 0.3520336605890603
+# Easy Pass@1: 0.7184873949579832
+# Medium Pass@1: 0.26881720430107525
+# Hard Pass@1: 0.025510204081632654
+
 OUTPUT_LOG="${OUTPUT_DIR}/log.json"
-python -m lcb_runner.evaluation.compute_scores --eval_all_file ${OUTPUT_LOG} --start_date 2024-05-01
+python -m lcb_runner.evaluation.compute_scores --eval_all_file ${OUTPUT_LOG}
 
 MODEL_DIR=Qwen/Qwen2.5-Coder-7B-Instruct
 OUTPUT_DIR=./evaluation-badcoder/

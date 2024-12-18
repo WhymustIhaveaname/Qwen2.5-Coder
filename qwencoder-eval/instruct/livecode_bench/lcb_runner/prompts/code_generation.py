@@ -239,8 +239,7 @@ def format_prompt_generation(
 
     if LanguageModelStyle == LMStyle.MyBadCoder:
         prompt = f"{PromptConstants.SYSTEM_MESSAGE_MYBADCODER}\n\n"
-        # prompt += f"{get_codeqwen_question_template_answer(question)}"
-        prompt += f"this is a test, please say hello"
+        prompt += f"{get_codeqwen_question_template_answer(question)}"
         return prompt
 
     if LanguageModelStyle == LMStyle.CodeLLaMaInstruct:
